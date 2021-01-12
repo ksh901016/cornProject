@@ -3,6 +3,7 @@ package com.corn.toyproject.core.api.sample.validation.controller;
 import com.corn.toyproject.core.api.sample.validation.entity.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,6 +26,7 @@ public class UserControllerTest {
     }
 
     @Test
+    @Ignore
     void addUserTest() throws Exception {
         User user = User.builder().name("").age(20).build();
         //log.info("{}", objectMapper.writeValueAsString(user));
