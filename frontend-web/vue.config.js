@@ -1,4 +1,6 @@
+const path = require("path");
 module.exports = {
+  outputDir: path.resolve(__dirname, "./docker/dist"),
   devServer: {
     https: false,
     port: 9090,
