@@ -60,7 +60,8 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.1.1</version>
                 <configuration>
-                    <imageName>${docker.image.name}:${docker.image.tag}</imageName>
+                    <!--<imageName>${docker.image.name}:${docker.image.tag}</imageName>-->
+                    <imageName>corn_back</imageName>
                     <dockerDirectory>${basedir}/target/dockerfile</dockerDirectory>
                     <resources>
                         <resource>

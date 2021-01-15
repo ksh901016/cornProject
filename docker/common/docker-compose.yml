@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  front:
+    image: corn_front
+    ports:
+      - "9090:80"
+    depends_on:
+      - back
+  back:
+    image: corn_back
+    ports:
+      - "8080:8080"
