@@ -4,16 +4,7 @@ services:
     image: corn_front
     ports:
       - "9090:80"
-    networks:
-      - default
-      - corn_net
   back:
     image: corn_back
     ports:
       - "8080:8080"
-    networks:
-      - default
-      - corn_net
-networks:
-  corn_net:
-    driver: bridge
