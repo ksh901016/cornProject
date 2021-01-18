@@ -15,7 +15,7 @@
     methods: {
       ...mapMutations(['setLoading']),
       onClick(){
-        $api.get("/api/greeting").then(response => {
+        $api.fetchWithLoadingProgress("/api/greeting").then(response => {
           alert(response.data);
         });
       },

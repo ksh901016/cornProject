@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/lotto")
+@RequestMapping("/api/lotto")
 @RequiredArgsConstructor
 public class LottoController {
     private final LottoService lottoService;
