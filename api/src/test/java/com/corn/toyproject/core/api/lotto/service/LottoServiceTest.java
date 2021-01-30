@@ -1,20 +1,18 @@
 package com.corn.toyproject.core.api.lotto.service;
 
+import com.corn.toyproject.core.api.lotto.entity.LottoMachine;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
 public class LottoServiceTest {
 
-    private LottoService lottoService = new LottoService();
+    private LottoMachine lottoMachine = new LottoMachine();
 
     @Test
-    void pickTest(){
-        log.info("result : {}", lottoService.pick());
+    void pickBallTest(){
+        log.debug("result : {}", lottoMachine.pickBall(6));
     }
 
-    @Test
-    void makeLottoNumbersTest(){
-        log.info("result : {}", lottoService.makeLottoNumbers());
-    }
+
 }

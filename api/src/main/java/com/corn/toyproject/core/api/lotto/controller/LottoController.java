@@ -17,6 +17,6 @@ public class LottoController {
 
     @GetMapping("/{count}")
     public Response getLottoNumberList(@PathVariable int count){
-        return new SuccessResponse(lottoService.getLottoNumberList(count));
+        return new SuccessResponse(lottoService.lottery(count));
     }
 }

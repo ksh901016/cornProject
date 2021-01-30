@@ -1,39 +1,25 @@
 package com.corn.toyproject.core.api.lotto.service;
 
-import com.corn.toyproject.core.api.lotto.entity.LottoNumber;
+import com.corn.toyproject.core.api.lotto.entity.LottoBall;
+import com.corn.toyproject.core.api.lotto.entity.LottoMachine;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
+@RequiredArgsConstructor
 public class LottoService {
-    public List<LottoNumber> getLottoNumberList(int count){
-        List<LottoNumber> lottoNumberList = new ArrayList<>();
+    private final LottoMachine lottoMachine;
+
+    public List<Set<LottoBall>> lottery(int count){
+        List<Set<LottoBall>> lottoList = new ArrayList<>();
+
         for(int i=0; i<count; i++){
-            lottoNumberList.add(makeLottoNumbers());
+            lottoList.add(lottoMachine.pickBall(6));
         }
-        return lottoNumberList;
-    }
-
-    public LottoNumber makeLottoNumbers(){
-        LottoNumber lottoNumber = new LottoNumber();
-        lottoNumber.add(pick());
-
-        for(int i=0; i<5; i++){
-            int num = pick();
-            while(lottoNumber.contains(num)){
-                num = pick();
-            }
-            lottoNumber.add(num);
-        }
-        lottoNumber.sort();
-
-        return lottoNumber;
-    }
-
-    public int pick(){
-        double randomValue = Math.random();
-        return (int)(randomValue * 45) + 1;
+        return lottoList;
     }
 }
