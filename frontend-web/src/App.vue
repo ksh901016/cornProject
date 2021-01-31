@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
-    <div :style="getLoading? '' : 'display:none'">
+    <div class="spinner" :style="getLoading? '' : 'display:none'">
       <b-spinner></b-spinner>
     </div>
   </div>
@@ -21,5 +21,10 @@
 <style>
   #app{
     margin: 5px;
+  }
+  .spinner{
+    position: absolute;
+    left: 50%;
+    top: 50%;
   }
 </style>

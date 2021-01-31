@@ -28,10 +28,10 @@ public class LottoBall implements Comparable<LottoBall>{
     @AllArgsConstructor
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
     private enum Color{
-        YELLOW(0, "#FFFF00"), // 1 ~ 10번 공
-        BLUE(1, "#0000FF"),   // 11 ~ 20번 공
+        YELLOW(0, "#e6e600"), // 1 ~ 10번 공
+        BLUE(1, "#00008B"),   // 11 ~ 20번 공
         RED(2, "#FF0000"),    // 21 ~ 30번 공
-        BLACK(3, "#000000"),  // 31 ~ 40번 공
+        GRAY(3, "#696969"),   // 31 ~ 40번 공
         GREEN(4, "#008000");  // 41 ~ 45번 공
 
         private int index;
