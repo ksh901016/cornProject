@@ -1,4 +1,4 @@
-package com.corn.toyproject.core.api.lotto.entity;
+package com.corn.toyproject.core.api.domain.lotto.entity;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

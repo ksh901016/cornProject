@@ -1,6 +1,6 @@
 package com.corn.toyproject.core.api.lotto.service;
 
-import com.corn.toyproject.core.api.lotto.entity.LottoMachine;
+import com.corn.toyproject.core.api.domain.lotto.entity.LottoMachine;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 

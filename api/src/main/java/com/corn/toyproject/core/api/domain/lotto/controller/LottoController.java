@@ -1,8 +1,8 @@
-package com.corn.toyproject.core.api.lotto.controller;
+package com.corn.toyproject.core.api.domain.lotto.controller;
 
 import com.corn.toyproject.core.api.common.entity.Response;
 import com.corn.toyproject.core.api.common.entity.SuccessResponse;
-import com.corn.toyproject.core.api.lotto.service.LottoService;
+import com.corn.toyproject.core.api.domain.lotto.service.LottoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

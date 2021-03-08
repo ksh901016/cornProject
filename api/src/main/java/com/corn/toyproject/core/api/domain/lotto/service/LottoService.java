@@ -1,7 +1,7 @@
-package com.corn.toyproject.core.api.lotto.service;
+package com.corn.toyproject.core.api.domain.lotto.service;
 
-import com.corn.toyproject.core.api.lotto.entity.LottoBall;
-import com.corn.toyproject.core.api.lotto.entity.LottoMachine;
+import com.corn.toyproject.core.api.domain.lotto.entity.LottoBall;
+import com.corn.toyproject.core.api.domain.lotto.entity.LottoMachine;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

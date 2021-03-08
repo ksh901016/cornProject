@@ -1,4 +1,4 @@
-package com.corn.toyproject.core.api.lotto.entity;
+package com.corn.toyproject.core.api.domain.lotto.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

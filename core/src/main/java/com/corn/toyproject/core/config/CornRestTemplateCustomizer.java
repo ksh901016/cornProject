@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Collections;
 
 @Component
-public class ToyProjectRestTemplateCustomizer implements RestTemplateCustomizer {
+public class CornRestTemplateCustomizer implements RestTemplateCustomizer {
     @Override
     public void customize(RestTemplate restTemplate) {
         restTemplate.setRequestFactory(new BufferingClientHttpRequestFactory(new HttpComponentsClientHttpRequestFactory()));
