@@ -1,5 +1,6 @@
 package com.corn.toyproject.core.api.domain.band.service;
 
+import com.corn.toyproject.core.api.domain.band.entity.AccessTokenResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,7 +40,7 @@ public class AuthApiService {
         return String.format(bandDomain.concat(AUTHORIZATION_URI).concat("?response_type=code&client_id=%s&redirect_uri=%s"), CLIENT_ID, encodedCallbackUrl);
     }
 
-    public void getAccessTokenInfo(String code){
+    public AccessTokenResponse getAccessTokenInfo(String code){
         String queryParams = String.format("?code=%s&grant_type=authorization_code", code);
 
         HttpHeaders headers = new HttpHeaders();
@@ -47,7 +48,7 @@ public class AuthApiService {
         headers.add(HttpHeaders.AUTHORIZATION, "Basic ".concat(base64EncodedAuthInfo));
 
         String url = bandDomain.concat(TOKEN_URI).concat(queryParams);
-        log.info("{}", restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(headers), Map.class).getBody());
+        return restTemplate.exchange(url, HttpMethod.GET, new HttpEntity<>(headers), AccessTokenResponse.class).getBody();
     }
 
 }
