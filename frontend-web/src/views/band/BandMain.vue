@@ -14,8 +14,17 @@
       <div>Selected : <strong>{{selected}}</strong></div>
     </div>
     <div>
-      <label class="mr-1">딜레이 : </label>
-      <input type="number" min="10" value="10" style="width:50px;">
+      <b-form-checkbox
+        v-model="isInfinite">
+        무한 전송 하기(최소 딜레이 10초) : {{isInfinite}}
+      </b-form-checkbox>
+      <b-form-textarea
+        v-model="content"
+        placeholder="내용"
+        rows="5"
+        no-resize>
+      </b-form-textarea>
+      <b-button class="mt-1" @click="post">전송</b-button>
     </div>
   </div>
 </template>
@@ -28,7 +37,9 @@
       return{
         selected : [],
         bandList: [],
-        coolTime: 10
+        coolTime: 10,
+        isInfinite: false,
+        contents: ""
       }
     },
     methods: {
@@ -48,6 +59,22 @@
             bandList.forEach(band => this.bandList.push({text: band.name, value: band.band_key}));
           }else{
             alert("오류 발생");
+          }
+        });
+      },
+      post(){
+        if(this.selected.length === 0){
+          alert("밴드를 선택해 주세요.");
+          return;
+        }
+        if(this.content.trim() === ''){
+          alert("전송할 내용을 적어주세요.");
+          return;
+        }
+
+        $api.post("/api/band/post", {"bandKeyList": this.selected, "content" : this.content}).then(response => {
+          if(response.data.code === 0){
+            alert("성공 !!");
           }
         });
       }
