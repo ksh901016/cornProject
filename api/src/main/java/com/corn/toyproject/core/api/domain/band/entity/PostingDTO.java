@@ -12,4 +12,5 @@ import java.util.List;
 public class PostingDTO {
     private List<String> bandKeyList;
     private String content;
+    private boolean isInfinite;
 }

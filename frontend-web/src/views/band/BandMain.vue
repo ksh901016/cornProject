@@ -2,7 +2,13 @@
   <div>
     <div class="mb-3">
       <b-button class="mr-1" variant="outline-primary" @click="login">로그인하기</b-button>
-      <b-button variant="outline-primary" @click="getBandList">밴드조회</b-button>
+      <b-button class="mr-1" variant="outline-primary" @click="getBandList">밴드조회</b-button>
+      <b-button class="mr-1" variant="outline-primary" @click="getBandUser">사용자 정보 조회</b-button>
+      <b-button variant="outline-primary" @click="stop">정지</b-button>
+    </div>
+    <div class="mb-1">
+      <span>이름 : {{user.name}}</span>
+      <img :src="user.profileUrl">
     </div>
     <div class="mb-1">
       <b-form-checkbox-group
@@ -39,7 +45,11 @@
         bandList: [],
         coolTime: 10,
         isInfinite: false,
-        contents: ""
+        contents: "",
+        user: {
+          name: "",
+          profileUrl: ""
+        }
       }
     },
     methods: {
@@ -53,10 +63,21 @@
         });
       },
       getBandList(){
+        this.bandList = [];
         $api.fetchWithLoadingProgress("/api/bands").then(response => {
           if(response.data.code === 0){
             const bandList = response.data.result.result_data.bands;
             bandList.forEach(band => this.bandList.push({text: band.name, value: band.band_key}));
+          }else{
+            alert("오류 발생");
+          }
+        });
+      },
+      getBandUser(){
+        $api.fetchWithLoadingProgress("/api/band/user").then(response =>{
+          if(response.data.code === 0){
+            this.user.name = response.data.result.result_data.name;
+            this.user.profileUrl = response.data.result.result_data.profile_image_url
           }else{
             alert("오류 발생");
           }
@@ -72,7 +93,14 @@
           return;
         }
 
-        $api.post("/api/band/post", {"bandKeyList": this.selected, "content" : this.content}).then(response => {
+        $api.post("/api/band/post", {"bandKeyList": this.selected, "content" : this.content, "infinite" : this.isInfinite}).then(response => {
+          if(response.data.code === 0){
+            alert("성공 !!");
+          }
+        });
+      },
+      stop(){
+        $api.post("/api/band/stop", {}).then(response => {
           if(response.data.code === 0){
             alert("성공 !!");
           }

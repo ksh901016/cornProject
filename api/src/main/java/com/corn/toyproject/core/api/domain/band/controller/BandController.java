@@ -29,4 +29,20 @@ public class BandController {
         bandService.post(postingDTO);
         return new SuccessResponse(null);
     }
+
+    @GetMapping("/api/band/user")
+    public Response getBandUser(){
+        return new SuccessResponse(bandService.getBandUser());
+    }
+
+    @GetMapping("/api/band/isLoading")
+    public Response isLoading(){
+        return new SuccessResponse(bandService.isLoading());
+    }
+
+    @PostMapping("/api/band/stop")
+    public Response stop(){
+        bandService.setInfinite(false);
+        return new SuccessResponse(null);
+    }
 }

@@ -2,6 +2,7 @@ package com.corn.toyproject.core.api.domain.band.service;
 
 import com.corn.toyproject.core.api.domain.band.entity.BandCommonResponse;
 import com.corn.toyproject.core.api.domain.band.entity.BandPostingRequest;
+import com.corn.toyproject.core.api.domain.band.entity.BandUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -22,6 +23,7 @@ public class BandApiService {
     private static final String BAND_LIST_URI = "/v2.1/bands";
     private static final String BAND_POSTING_URI = "/v2.2/band/post/create";
     private static final String BAND_PERMISSIONS = "/v2/band/permissions";
+    private static final String BAND_USER_INFO_URI = "/v2/profile";
 
     public BandCommonResponse getBandList(String accessToken){
         String queryParams = String.format("?access_token=%s", accessToken);
@@ -31,6 +33,10 @@ public class BandApiService {
     public void getPermissions(String accessToken, String bandKey){
         String queryParams = String.format("?access_token=%s&band_key=%s&permissions=posting", accessToken, bandKey);
         callApi(BAND_PERMISSIONS.concat(queryParams), HttpMethod.GET, null);
+    }
+
+    public BandCommonResponse getBandUser(String accessToken){
+        return callApi(BAND_USER_INFO_URI.concat("?access_token=").concat(accessToken), HttpMethod.GET, null);
     }
 
     public void post(BandPostingRequest postingRequest){
